@@ -1,0 +1,62 @@
+version: '2'
+
+networks:
+  custom:
+    driver: bridge
+
+services:
+  control:
+    image: schoolofdevops/chef-controller:v1.1
+    ports:
+      - "80:8000"
+      - "2222:22"
+    environment:
+      CODEBOX_USERNAME: admin
+      CODEBOX_PASSWORD: schoolofdevops
+    volumes:
+      - ./code:/workspace
+    networks:
+      - custom
+    container_name: control
+    domainname: schoolofdevops.com
+    hostname: control
+  lb:
+    image: schoolofdevops/chef-centos6-node:v1.1
+    container_name: lb
+    ports:
+       - "2223:22"
+       - "8080:80"
+    networks:
+      - custom
+    domainname: schoolofdevops.com
+    hostname: lb
+  app1:
+    image: schoolofdevops/chef-centos6-node:v1.1
+    ports:
+       - "2224:22"
+       - "81:80"
+    networks:
+      - custom
+    container_name: app1
+    domainname: schoolofdevops.com
+    hostname: app1
+  app2:
+    image: schoolofdevops/chef-ubuntu14-node:1.1
+    ports:
+      - "2225:22"
+      - "82:80"
+    networks:
+      - custom
+    container_name: app2
+    domainname: schoolofdevops.com
+    hostname: app2
+  db:
+    image: schoolofdevops/chef-centos6-node:v1.1
+    ports:
+      - "2226:22"
+      - "3306:3306"
+    networks:
+      - custom
+    container_name: db
+    domainname: schoolofdevops.com
+    hostname: db

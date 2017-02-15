@@ -6,7 +6,7 @@ networks:
 
 services:
   control:
-    image: schoolofdevops/ansible-controller:v1.2
+    image: control
     ports:
       - "8000:8000"
       - "2222:22"
@@ -20,8 +20,8 @@ services:
     container_name: control
     domainname: schoolofdevops.com
     hostname: control
-  lb:
-    image: schoolofdevops/centos-node:v1.1
+  node1:
+    image: node
     container_name: lb
     ports:
        - "2223:22"
@@ -30,8 +30,8 @@ services:
       - custom
     domainname: schoolofdevops.com
     hostname: lb
-  app1:
-    image: schoolofdevops/centos-node:v1.1
+  node2:
+    image: node
     ports:
        - "2224:22"
        - "81:80"
@@ -40,7 +40,7 @@ services:
     container_name: app1
     domainname: schoolofdevops.com
     hostname: app1
-  app2:
+  node3:
     image: schoolofdevops/ubuntu-node:v1.1
     ports:
       - "2225:22"
@@ -50,8 +50,8 @@ services:
     container_name: app2
     domainname: schoolofdevops.com
     hostname: app2
-  db:
-    image: schoolofdevops/centos-node:v1.1
+  node4:
+    image: node
     ports:
       - "2226:22"
       - "3306:3306"

@@ -18,5 +18,7 @@ RUN echo -e "service sshd start && service sshd stop && \
 
 RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+COPY authorized_keys /home/devops/.ssh/authorized_keys
+
 EXPOSE 22
 CMD ["/bin/bash","/bootstrap.sh"]

@@ -20,8 +20,9 @@ services:
     container_name: control
     domainname: schoolofdevops.com
     hostname: control
+    restart: always
   node1:
-    image: node
+    image: schoolofdevops/cs-ansible-centos:latest
     container_name: lb
     ports:
        - "2223:22"
@@ -30,6 +31,7 @@ services:
       - custom
     domainname: schoolofdevops.com
     hostname: lb
+    restart: always
   node2:
     image: node
     ports:
@@ -40,6 +42,7 @@ services:
     container_name: app1
     domainname: schoolofdevops.com
     hostname: app1
+    restart: always
   node3:
     image: schoolofdevops/ubuntu-node:v1.1
     ports:
@@ -50,8 +53,9 @@ services:
     container_name: app2
     domainname: schoolofdevops.com
     hostname: app2
+    restart: always
   node4:
-    image: node
+    image: schoolofdevops/cs-ansible-centos:latest
     ports:
       - "2226:22"
       - "3306:3306"
@@ -60,3 +64,4 @@ services:
     container_name: db
     domainname: schoolofdevops.com
     hostname: db
+    restart: always

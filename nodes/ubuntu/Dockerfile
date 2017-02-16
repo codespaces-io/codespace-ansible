@@ -20,5 +20,7 @@ RUN useradd -ms /bin/bash devops && \
 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+COPY authorized_keys /home/devops/.ssh/authorized_keys
+
 EXPOSE 22
 CMD    ["/usr/sbin/sshd", "-D"]

@@ -9,6 +9,7 @@ services:
     image: codespaces/anisble-control:v0.1.0
     ports:
       - "8000:8000"
+      - "2222:22"
     environment:
       CODEBOX_USERNAME: devops
       CODEBOX_PASSWORD: codespaces
@@ -17,46 +18,50 @@ services:
     networks:
       - custom
     container_name: control
-    domainname: codespaces.io
+    domainname: schoolofdevops.com
     hostname: control
     restart: always
   node1:
     image: codespaces/anisble-node-centos-6:v0.1.0
     container_name: lb
     ports:
+       - "2223:22"
        - "8080:80"
     networks:
       - custom
-    domainname: codespaces.io
+    domainname: schoolofdevops.com
     hostname: lb
     restart: always
   node2:
     image: codespaces/anisble-node-centos-6:v0.1.0
     ports:
+       - "2224:22"
        - "81:80"
     networks:
       - custom
     container_name: app1
-    domainname: codespaces.io
+    domainname: schoolofdevops.com
     hostname: app1
     restart: always
   node3:
     image: codespaces/anisble-node-ubuntu-1404:v0.1.0
     ports:
+      - "2225:22"
       - "82:80"
     networks:
       - custom
     container_name: app2
-    domainname: codespaces.io
+    domainname: schoolofdevops.com
     hostname: app2
     restart: always
   node4:
     image: codespaces/anisble-node-centos-6:v0.1.0
     ports:
+      - "2226:22"
       - "3306:3306"
     networks:
       - custom
     container_name: db
-    domainname: codespaces.io
+    domainname: schoolofdevops.com
     hostname: db
     restart: always

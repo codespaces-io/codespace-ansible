@@ -6,7 +6,7 @@ networks:
 
 services:
   control:
-    image: control
+    image: schoolofdevops/cs-ansible-controller:latest
     ports:
       - "8000:8000"
       - "2222:22"
@@ -33,7 +33,7 @@ services:
     hostname: lb
     restart: always
   node2:
-    image: node
+    image: schoolofdevops/cs-ansible-centos:latest
     ports:
        - "2224:22"
        - "81:80"
@@ -44,7 +44,7 @@ services:
     hostname: app1
     restart: always
   node3:
-    image: schoolofdevops/ubuntu-node:v1.1
+    image: schoolofdevops/cs-ansible-ubuntu:latest
     ports:
       - "2225:22"
       - "82:80"

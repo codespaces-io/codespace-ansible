@@ -1,6 +1,6 @@
-# codespace--setup
+# codespace-ansible-setup
 
-Docker compose for running Codebox Web IDE and 
+Docker compose for running Codebox Web IDE and
 
 
 change the directory

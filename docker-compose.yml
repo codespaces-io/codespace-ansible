@@ -6,20 +6,18 @@ networks:
 
 services:
   control:
-    image: codespaces/anisble-control:v0.1.0
+    image: ansible-control
     ports:
       - "8000:8000"
     volumes:
       - ./code:/workspace
     networks:
       - custom
-    container_name: control
     domainname: codespaces.io
     hostname: control
     restart: always
   node1:
     image: codespaces/anisble-node-centos-6:v0.1.0
-    container_name: lb
     ports:
        - "8080:80"
     networks:
@@ -33,7 +31,6 @@ services:
        - "81:80"
     networks:
       - custom
-    container_name: app1
     domainname: codespaces.io
     hostname: app1
     restart: always
@@ -43,7 +40,6 @@ services:
       - "82:80"
     networks:
       - custom
-    container_name: app2
     domainname: codespaces.io
     hostname: app2
     restart: always
@@ -53,7 +49,6 @@ services:
       - "3306:3306"
     networks:
       - custom
-    container_name: db
     domainname: codespaces.io
     hostname: db
     restart: always

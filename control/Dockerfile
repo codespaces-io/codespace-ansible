@@ -39,5 +39,5 @@ COPY insecure_key.pem /root/.ssh/id_rsa
 
 EXPOSE 22 8000
 
-CMD /usr/bin/akurath run ./myProject --open 
+CMD /usr/bin/akurath run 
 

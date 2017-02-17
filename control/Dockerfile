@@ -33,7 +33,8 @@ RUN useradd -ms /bin/bash devops && \
     echo 'devops:codespaces' |chpasswd && \
     adduser devops sudo
 
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers  && \
+    sed -i 's/ask/no/g' /etc/ssh_config
 
 COPY insecure_key.pem /root/.ssh/id_rsa
 

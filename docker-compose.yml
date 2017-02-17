@@ -6,7 +6,7 @@ networks:
 
 services:
   control:
-    image: ansible-control
+    image: ansible-control:latest
     ports:
       - "8000:8000"
     volumes:

@@ -34,7 +34,7 @@ RUN useradd -ms /bin/bash devops && \
     adduser devops sudo
 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers  && \
-    sed -i 's/ask/no/g' /etc/ssh_config
+    echo 'StrictHostKeyChecking no' >> /etc/ssh/ssh_config
 
 COPY insecure_key.pem /root/.ssh/id_rsa
 

@@ -7,6 +7,7 @@ set -eux
 #
 # For example:
 # yum install -y curl wget git tmux firefox xvfb
+sudo su
 
 echo "Installing Docker"
 #Installing Docker
@@ -19,41 +20,23 @@ echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" | sudo tee /etc
 sudo apt-get update -y
 sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual -y
 sudo apt-get install docker-engine -y
+sudo usermod -aG docker ubuntu
 sudo service docker start
 
 echo "Installing emacs git tree bzip2 ntp telnet inetutils-traceroute nmap"
 #Installing emacs git tree bzip2 ntp telnet inetutils-traceroute nmap
-apt-get install -y emacs git tree bzip2 ntp telnet inetutils-traceroute nmap
+sudo apt-get install -y emacs git tree bzip2 ntp telnet inetutils-traceroute nmap
 
 echo "Installing Docker-compose"
 #Installing Docker-compose
-curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
 
-chmod +x /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
 
 echo "copying codespace code"
 #copying codespace code
-mkdir -p /codespace
-cp /tmp/*.yml /codespace/
+sudo mkdir -p /codespace
+sudo cp /tmp/*.yml /codespace/
 
 echo "starting containers"
 cd /codespace && sudo docker-compose up -d && touch /tmp/test-`date "+%H:%M:%S"`
-
-echo "modifying in rc.local"
-#modifying in rc.local
-cat <<EOF > /etc/rc.local
-#!/bin/bash
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
-cd /codespace && docker-compose up -d
-exit 0
-EOF

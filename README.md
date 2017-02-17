@@ -1,18 +1,18 @@
-# ansible-setup-docker
-Docker compose for running Codebox Web IDE and ansible.
+# codespace--setup
+
+Docker compose for running Codebox Web IDE and 
 
 
-Create a Mount directory in docker host for Workspace 
-
-   -  /mnt/codebox
+change the directory
+   -  /codebox
 
 Run the Docker Compose
- 
+
    - docker-compose up -d
 
 Access Credentials
 
-   - http://ip
+   - http://ip:8000
 
-   - username: admin
-   - password: standard_ic_pass
+   - username: devops
+   - password: codespaces

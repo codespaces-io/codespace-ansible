@@ -9,9 +9,6 @@ services:
     image: codespaces/anisble-control:v0.1.0
     ports:
       - "8000:8000"
-    environment:
-      CODEBOX_USERNAME: devops
-      CODEBOX_PASSWORD: codespaces
     volumes:
       - ./code:/workspace
     networks:

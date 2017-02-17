@@ -1,14 +1,14 @@
 {
   "variables": {
-    "aws_access_key": "$akey",
-    "aws_secret_key": "$skey"
+    "aws_access_key": "{{env `$akey`}}",
+    "aws_secret_key": "{{env `$skey`}}"
   },
   "builders": [{
     "type": "amazon-ebs",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-e13739f6",
+    "source_ami": "ami-49c9295f",
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
     "ami_name": "-codespace"

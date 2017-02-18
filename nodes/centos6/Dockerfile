@@ -9,20 +9,20 @@ COPY motd.sh /opt/
 
 RUN chmod +x /opt/motd.sh && \
     sh /opt/motd.sh && \
-    rm -rf /opt/motd.sh
-
-RUN useradd devops && \
+    rm -rf /opt/motd.sh && \
+    useradd devops && \
     echo 'devops:codespaces' | chpasswd
 
-# RUN echo -e "service sshd start && service sshd stop && \
-#     /usr/sbin/sshd -D" > /bootstrap.sh
+RUN echo -e "service sshd start && service sshd stop && \
+    /usr/sbin/sshd -D" > /bootstrap.sh
 
-RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
+    mkdir -p /home/devops/.ssh
 
-COPY authorized_keys /home/devops/.ssh/authorized_keys
+ADD authorized_keys /home/devops/.ssh/authorized_keys
 
-RUN chown devops:devops /home/devops/.ssh/authorized_keys
+RUN chown -R devops. /home/devops/.ssh
 
 EXPOSE 22
-# CMD ["/bin/bash","/bootstrap.sh"]
-CMD    ["/usr/sbin/sshd", "-D"]
+
+CMD ["/bin/bash","/bootstrap.sh"]

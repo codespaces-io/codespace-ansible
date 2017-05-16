@@ -1,4 +1,4 @@
-FROM codespaces/akurath:v0.2.0
+FROM codespaces/akurath:v0.1.0
 MAINTAINER Vijayboopathy E <vibe@initcron.org>
 
 RUN apt-get update && \

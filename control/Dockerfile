@@ -7,6 +7,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y ansible
 
+RUN echo nameserver 8.8.8.8 > /etc/resolve.conf
+
 COPY insecure_key.pem /root/.ssh/id_rsa
 
 EXPOSE 22 8000

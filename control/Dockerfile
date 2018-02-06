@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y ansible
 
-RUN echo nameserver 8.8.8.8 > /etc/resolv.conf
+RUN echo nameserver 8.8.8.8 > /etc/resolvconf/resolv.conf.d/base
 
 COPY insecure_key.pem /root/.ssh/id_rsa
 

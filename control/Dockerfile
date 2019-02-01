@@ -1,5 +1,4 @@
-FROM codespaces/akurath:v0.2.0
-MAINTAINER Vijayboopathy E <vibe@initcron.org>
+FROM codespaces/theia:v0.2.0
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
@@ -7,11 +6,8 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y ansible openssh-server
 
-RUN echo nameserver 8.8.8.8 > /etc/resolvconf/resolv.conf.d/base
 
 COPY insecure_key.pem /root/.ssh/id_rsa
 
-EXPOSE 22 8000
 
-CMD /usr/bin/akurath run 
 

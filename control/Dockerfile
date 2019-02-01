@@ -1,4 +1,4 @@
-FROM codespaces/theia:v0.2.0
+FROM codespaces/theia:v0.3.1
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
@@ -7,7 +7,6 @@ RUN apt-get update && \
     apt-get install -y ansible openssh-server
 
 
-COPY insecure_key.pem /root/.ssh/id_rsa
 
 
 

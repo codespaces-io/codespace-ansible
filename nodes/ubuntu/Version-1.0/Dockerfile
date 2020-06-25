@@ -2,7 +2,7 @@ FROM       ubuntu:18.04
 
 RUN apt-get update
 
-RUN apt-get install -y openssh-server sudo vim python python-apt python-pip
+RUN apt-get install -y openssh-server sudo vim python3 python3-apt python3-pip
 RUN mkdir /var/run/sshd
 
 COPY motd.sh /opt/

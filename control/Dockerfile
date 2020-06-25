@@ -1,4 +1,4 @@
-FROM codespaces/theia:v0.3.1
+FROM codespaces/theia:v2.0.0
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \

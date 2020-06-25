@@ -1,5 +1,4 @@
-FROM       ubuntu:16.04
-MAINTAINER Babu <babu@initcron.org>
+FROM       ubuntu:18.04
 
 RUN apt-get update
 

@@ -9,7 +9,7 @@ networks:
         - subnet: 192.168.61.0/24
 services:
   control:
-    image: codespaces/ansible-control:v1.0
+    image: codespaces/ansible-control:3.0.0
     ports:
       - "8000:8000"
     volumes:
@@ -55,7 +55,7 @@ services:
     hostname: app2
     restart: always
   app3:
-    image: codespaces/ansible-node-ubuntu-1404:v0.1.0
+    image: codespaces/nsible-node-ubuntu:18.04
     ports:
       - "83:80"
     networks:

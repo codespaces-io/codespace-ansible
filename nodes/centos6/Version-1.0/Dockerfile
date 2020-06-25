@@ -1,5 +1,4 @@
 FROM centos:6
-MAINTAINER babu <babu@initcron.org>
 
 LABEL env=des
 

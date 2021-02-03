@@ -1,4 +1,4 @@
-FROM centos:6
+FROM centos:8
 
 LABEL env=des
 
@@ -12,16 +12,18 @@ RUN chmod +x /opt/motd.sh && \
     useradd devops && \
     echo 'devops:codespaces' | chpasswd
 
-RUN echo -e "service sshd start && service sshd stop && \
-    /usr/sbin/sshd -D" > /bootstrap.sh
-
 RUN echo 'devops ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     mkdir -p /home/devops/.ssh
 
 ADD authorized_keys /home/devops/.ssh/authorized_keys
 
-RUN chown -R devops. /home/devops/.ssh
+RUN chown -R devops. /home/devops/.ssh && \
+    rm /run/nologin
+
+COPY entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 22
 
-CMD ["/bin/bash","/bootstrap.sh"]
+CMD ["/usr/sbin/sshd","-D"]

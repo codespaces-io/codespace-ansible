@@ -55,7 +55,7 @@ services:
     hostname: app2
     restart: always
   app3:
-    image: codespaces/nsible-node-ubuntu:18.04
+    image: codespaces/ansible-node-ubuntu:18.04
     ports:
       - "83:80"
     networks:
